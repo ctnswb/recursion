@@ -9,7 +9,7 @@ var getElementsByClassName = function(className
   // initialize collection of elements with classname
   var elements = [];
 
-  function checkClassName(element, className) {
+  function checkClassName(element) {
     // if the element has a class that is className : element.classList.contains("class")
     if (element.classList && element.classList.contains(className)) {
       // add the element to the collection
@@ -20,12 +20,12 @@ var getElementsByClassName = function(className
     // for each child
     for (var i = 0 ; i < children.length ; i++) {
       // check the class name
-      checkClassName(children[i], className);
+      checkClassName(children[i]);
     }
   }
 
   //starting, with the page body, check for class names
-  checkClassName(document.body, className);
+  checkClassName(document.body);
 
   return elements;
 
