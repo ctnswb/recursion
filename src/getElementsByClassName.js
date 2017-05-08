@@ -6,5 +6,27 @@
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className
 ) {
-  // your code here
+  // initialize collection of elements with classname
+  var elements = [];
+
+  function checkClassName(element, className) {
+    // if the element has a class that is className : element.classList.contains("class")
+    if (element.classList && element.classList.contains(className)) {
+      // add the element to the collection
+      elements.push(element);
+    }
+    // get the children of the element
+    var children = element.childNodes;
+    // for each child
+    for (var i = 0 ; i < children.length ; i++) {
+      // check the class name
+      checkClassName(children[i], className);
+    }
+  }
+
+  //starting, with the page body, check for class names
+  checkClassName(document.body, className);
+
+  return elements;
+
 };
